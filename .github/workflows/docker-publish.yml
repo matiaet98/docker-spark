@@ -13,6 +13,7 @@ env:
   # TODO: Change variable to your image's name.
   IMAGE_NAME: spark
 
+
 jobs:
   push:
     runs-on: ubuntu-latest
@@ -23,7 +24,8 @@ jobs:
         
       - name: Build image
         run: docker build . --file Dockerfile --rm --tag $IMAGE_NAME
-        
+      - name: Login to docker Registry
+        run: echo "${{ secrets.DOCKER_REGISTRY_PASSWORD }}" | docker login https://registry-1.docker.io -u ${{ secrets.DOCKER_REGISTRY_USER }} --password-stdin
       - name: Push image to Docker Registry
         run: |
           IMAGE_ID=${{ github.repository_owner }}/$IMAGE_NAME
