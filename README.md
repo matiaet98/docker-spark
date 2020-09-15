@@ -1,6 +1,7 @@
 # Apache Spark 3 for Docker
 
-This container if for creating an Apache Spark cluster using docker containers.
+This container is intended for creating an Apache Spark cluster using docker.
+
 I created it for testing purposes on a Nomad cluster, don't use it on production environments.
 
 
@@ -14,7 +15,7 @@ docker run \
   -p 8080:8080 \
   -p 18080:18080 \
   -e ROLE=master \
-  arquitectura/spark:3.0.0
+  matiaet98/spark:latest
 ```
 
 ### Start Spark Worker
@@ -26,7 +27,7 @@ docker run \
   -p 8081:8081 \
   -e SPARK_MASTER_HOST=<master host or ip> \
   -e ROLE=slave \
-  arquitectura/spark:3.0.0
+  matiaet98/spark:latest
 ```
 
 Environment variables:
