@@ -1,0 +1,25 @@
+name: Docker
+
+on:
+  push:
+    tags:
+       - '*'
+ 
+env:
+  IMAGE_NAME: matiaet98/spark
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build image
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: $IMAGE_NAME:${{ github.event.release.tag_name }}
+      
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
