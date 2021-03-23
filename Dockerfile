@@ -16,10 +16,10 @@ RUN apt update && \
     apt clean && \
     useradd -m -G users spark
 
-RUN wget https://archive.apache.org/dist/spark/spark-3.0.1/spark-3.0.1-bin-hadoop3.2.tgz && \
-    tar xfz spark-3.0.1-bin-hadoop3.2.tgz && \
-    rm -fr spark-3.0.1-bin-hadoop3.2.tgz && \
-    ln -s spark-3.0.1-bin-hadoop3.2 spark && \
+RUN wget https://archive.apache.org/dist/spark/spark-3.1.1/spark-3.1.1-bin-hadoop3.2.tgz && \
+    tar xfz spark-3.1.1-bin-hadoop3.2.tgz && \
+    rm -fr spark-3.1.1-bin-hadoop3.2.tgz && \
+    ln -s spark-3.1.1-bin-hadoop3.2 spark && \
     mkdir -p /spark/log && \
     mkdir -p /spark/run
 
